@@ -45,7 +45,6 @@
 - [ ] 租借算力通过ollama搭建Llama模型学习OpenAI API开发
 - [ ] Learn 若依
 - [ ] 准备命令行国际象棋
-- [ ] 将知识点分解为西蒙块
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
