@@ -13,4 +13,4 @@
 [commit]
 	gpgsign = true
 [gpg "ssh"]
-	allowedSignersFile = /home/free514dom/.config/git/allowed_signers
+	allowedSignersFile = ~/.config/git/allowed_signers
