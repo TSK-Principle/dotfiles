@@ -11,7 +11,7 @@
 - [ ] try vim helix shift+a切换到行末尾并进入插入模式
 - [ ] 可以用alt+e进入fish的编辑模式如果要写长命令的话非常方便
 - [ ] 偶尔去搜索引擎搜索白嫖ai
-- [ ] 偶尔打包github上最新更新的(不管Star数量)别人的dotfiles仓库给AI进行研究和吸取经验
+- [ ] 偶尔打包github上最新更新的(不管Star数量)别人的dotfiles仓库给AI进行研究和吸取经验.
 
 ### 🏃 Running
 - [ ] Get one month of access to [Hyperskill](https://hyperskill.org) for sprint learning Java Spring through [JetBrains Free Git Starter Pack](https://lp.jetbrains.com/free-git-starter-pack)
