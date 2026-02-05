@@ -26,6 +26,7 @@ set -gx EDITOR (command -v hx)
 set -gx VISUAL (command -v hx)
 set -gx LOCALSTACK_HOST 127.0.0.1
 
+fish_add_path /usr/sbin
 fish_add_path $HOME/.local/bin
 fish_add_path ~/go/bin
 
