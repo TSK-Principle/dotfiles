@@ -4,34 +4,21 @@ end
 
 if status is-interactive
     eval (keychain --eval --quiet --agents ssh github_universal)
-    # --- Vi 模式设置 ---
+    # vi mode
     fish_vi_key_bindings
-
-    # 设置光标形状
     set fish_cursor_default block
     set fish_cursor_insert line
     set fish_cursor_replace_one underscore
     set fish_cursor_visual block
-
-    # Vi 模式下的删除行为修正
-    bind -M default d delete-char
-    bind -M visual d 'commandline -f kill-selection; commandline -f end-selection; commandline -f repaint'
-
-    # --- 🚫 禁用方向键 (硬核模式) ---
-    # 原理：将方向键绑定到 'true' (即不做任何操作)
-    # 我们循环遍历 default (普通模式) 和 visual (可视模式)
     for mode in default visual
         bind -M $mode up true
         bind -M $mode down true
         bind -M $mode left true
         bind -M $mode right true
     end
-
     for key in up down left right
         bind -M insert $key true
     end
-
-    # FZF 官方按键绑定
     fzf_key_bindings
 end
 
