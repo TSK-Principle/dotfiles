@@ -46,7 +46,6 @@
 - [ ] Learn 若依
 - [ ] 准备命令行国际象棋
 - [ ] 理解ip a的输出
-- [ ] 请教我C语言命名空间
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
