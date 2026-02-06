@@ -665,9 +665,98 @@ Model-7:
 
 User-8:
 ``````text
+B
 ``````
 Model-8:
 ``````markdown
+太棒了！我就喜欢这种趁热打铁的劲头。🔥
+
+欢迎来到 **Level 2：计算 (Compute)**。
+
+如果说 Level 1 的 S3 是云端的“硬盘”（用来存东西），那么 Level 2 我们要学习的就是云端的“大脑”（用来算东西）。
+
+我们将学习最酷的一种计算方式：**Serverless (无服务器/AWS Lambda)**。
+以前，你想在云上运行代码，得先买一台虚拟电脑（EC2），装系统，装环境，很麻烦。
+现在，有了 Lambda，你只需要把代码“扔”上去，云会自动给你分配资源运行，跑完立刻释放。就像你打车一样，上车付费，下车走人，不需要自己养车。
+
+---
+
+## Level 2 - 第 1 课：打造你的第一个云函数
+
+### 🎓 概念讲解
+
+1. **Lambda 函数**：这就是我们的一段代码。
+2. **Runtime (运行时)**：告诉云你的代码是用什么语言写的（我们用 Python）。
+3. **Handler (处理器)**：告诉云，代码运行起来后，第一步先执行哪个函数（入口）。
+4. **Zip 打包**：AWS Lambda 要求我们将代码打包成 `.zip` 压缩包才能上传。
+
+---
+
+### 🛠️ 实战作业：编写并部署代码
+
+请确保你还在那个黑色的终端里，并且能看到 `(venv)` 的标志。
+
+#### ✅ Checkpoint 1: 编写代码
+
+我们需要写一个极其简单的 Python 程序。
+输入下面的命令，创建 `func.py`：
+
+```bash
+echo 'def handler(event, context): return "Hello from Level 2!"' > func.py
+
+
+```
+
+*(解释：这行代码定义了一个叫 `handler` 的函数，它什么都不做，只返回一句话。)*
+
+#### ✅ Checkpoint 2: 准备打包工具
+
+我们需要把这个文件压缩。Debian 系统有时候没有预装 `zip` 工具，我们先安装它（如果你哥哥装过了，这步会很快）。
+
+```bash
+sudo apt install zip -y
+
+
+```
+
+#### ✅ Checkpoint 3: 打包代码
+
+现在把 `func.py` 压缩成 `function.zip`。
+
+```bash
+zip function.zip func.py
+
+
+```
+
+> **预期结果：** 屏幕显示 `adding: func.py (stored 0%)` 之类的信息。
+
+#### ✅ Checkpoint 4: 部署到云端
+
+这是最长的一条命令，请仔细复制。我们要告诉 LocalStack：
+“创建一个叫 `my-func` 的函数，用 Python 3.10 跑，代码在压缩包里，入口是 `func` 文件里的 `handler` 函数，角色身份随便填（test-role）。”
+
+```bash
+awslocal lambda create-function \
+    --function-name my-func \
+    --runtime python3.10 \
+    --zip-file fileb://function.zip \
+    --handler func.handler \
+    --role arn:aws:iam::000000000000:role/test-role
+
+
+```
+
+*(注意：如果命令太长换行了，请确保完整复制)*
+
+---
+
+### 📤 提交作业
+
+如果 Checkpoint 4 成功，云端应该会返回一大串 JSON 数据（包括 FunctionArn, CodeSize 等信息）。
+
+请把你 **Checkpoint 4 的输出结果** 复制给我。
+(只要看到那一大串 JSON，就说明你的代码已经成功“住”进云里了！下一节我们来运行它。)
 ``````
 
 ---
