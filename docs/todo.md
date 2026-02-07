@@ -46,6 +46,7 @@
 - [ ] Learn 若依
 - [ ] 准备命令行国际象棋
 - [ ] 理解ip a的输出
+- [ ] 制造多种git常见的问题并学会解决
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
