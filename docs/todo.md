@@ -12,6 +12,7 @@
 - [ ] 可以用alt+e进入fish的编辑模式如果要写长命令的话非常方便
 - [ ] 偶尔去搜索引擎搜索白嫖ai
 - [ ] 偶尔打包github上最新更新的(不管Star数量)别人的dotfiles仓库给AI进行研究和吸取经验.
+- [ ] 问完一个问题开下一个窗口（新建对话）” 绝对更节省 Token(相对的也就是不节省token的方法是在单个聊天里面追问)
 
 ### 🏃 Running
 - [ ] Get one month of access to [Hyperskill](https://hyperskill.org) for sprint learning Java Spring through [JetBrains Free Git Starter Pack](https://lp.jetbrains.com/free-git-starter-pack)
