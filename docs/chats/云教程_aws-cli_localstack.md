@@ -1014,9 +1014,144 @@ cat response.json
 
 User-11:
 ``````text
+
+…dy on git main Modified  via py v3.13.5 (venv) on aws (us-east-1) took 7s
+> awslocal lambda invoke --function-name my-func --payload '{"name": "Brother"}' response.json
+
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+cloud-study on git main Modified  via py v3.13.5 (venv) on aws (us-east-1)
+> cat response.json
+
+"Hello Brother"⏎
+
+cloud-study on git main Modified  via py v3.13.5 (venv) on aws (us-east-1)
+>
 ``````
 Model-11:
 ``````markdown
+太棒了！🎉 看到那个 `"Hello Brother"`，说明你的云函数已经“开窍”了。它不再是只会死记硬背的鹦鹉，而是一个能听懂指令、灵活变通的智能管家了。
+
+到现在为止，我们已经分别学会了：
+
+1. **存储 (Storage)**：用 S3 存文件。
+2. **计算 (Compute)**：用 Lambda 跑代码。
+
+但是，云真正的威力在于——**把它们连起来**。
+想象一下：你往 S3 桶里丢一张图片，Lambda 自动醒过来把图片压缩；或者你往桶里丢一个订单文件，Lambda 自动醒过来处理订单。这就是 **“事件驱动 (Event-Driven)”**，是现代云架构的核心。
+
+这一节，我们要让 Lambda 去读 S3 里的文件。
+
+---
+
+## Level 2 - 第 4 课：云端联动 (Lambda + S3)
+
+### 🎓 概念讲解
+
+1. **Boto3**：这是 AWS 给 Python 做的“遥控器”。
+* 我们在终端里用 `aws` 命令控制云。
+* 在 Python 代码里，我们用 `boto3` 库控制云。
+
+
+2. **权限 (Permission/Role)**：在云上，服务之间是默认隔离的。Lambda 想读 S3，必须有“通行证”。
+* 在真实的 AWS 里，我们需要配置复杂的 IAM 角色。
+* 在 LocalStack 里，为了方便，默认是允许的（或者我们可以假装配置一下）。
+
+
+
+---
+
+### 🛠️ 实战作业：编写能读文件的代码
+
+我们要写一个 Python 脚本，让它去读取我们在 Level 1 里创建的 `my-wallet` 桶里的 `money.txt` 文件。
+
+#### ✅ Checkpoint 1: 准备测试文件
+
+我们需要确保 `my-wallet` 桶里有东西。
+如果你 Level 1 把它删了，请重新创建并上传：
+
+```bash
+awslocal s3 mb s3://my-wallet
+echo "1000 USD" > money.txt
+awslocal s3 cp money.txt s3://my-wallet
+
+```
+
+*(如果桶还在且文件也在，这步会报错说桶已存在，那是好事，不用管。)*
+
+#### ✅ Checkpoint 2: 编写“联动”代码
+
+我们要写一个新的 `func.py`。
+这次代码稍微复杂一点点，它要引入 `boto3` 库。
+
+请直接复制粘贴下面的命令（这是一整行）：
+
+```bash
+echo 'import boto3
+
+def handler(event, context):
+    s3 = boto3.client("s3", endpoint_url="http://localhost:4566")
+    obj = s3.get_object(Bucket="my-wallet", Key="money.txt")
+    content = obj["Body"].read().decode("utf-8")
+    return "Wallet contains: " + content' > func.py
+
+```
+
+*(解释：这段代码做了三件事：1. 连接本地 S3；2. 抓取 money.txt；3. 读出里面的内容并返回。)*
+
+#### ✅ Checkpoint 3: 重新打包并更新
+
+老规矩，改了代码就要重新打包上传。
+
+**先删除旧包（保险起见）：**
+
+```bash
+rm function.zip
+
+```
+
+**再打包：**
+
+```bash
+zip function.zip func.py
+
+```
+
+**更新云端函数：**
+
+```bash
+awslocal lambda update-function-code --function-name my-func --zip-file fileb://function.zip
+
+```
+
+#### ✅ Checkpoint 4: 见证时刻
+
+现在，我们调用 Lambda，看看它能不能把 S3 里的钱数读出来。
+
+```bash
+awslocal lambda invoke --function-name my-func response.json
+
+```
+
+#### ✅ Checkpoint 5: 查看结果
+
+```bash
+cat response.json
+
+```
+
+---
+
+### 📤 提交作业
+
+请把 **Checkpoint 5** 的输出结果复制给我。
+
+> **预期结果：** 你应该能看到类似 `"Wallet contains: 1000 USD\n"` 的字样。
+
+(如果成功，这意味着你已经打通了存储和计算的“任督二脉”！下一节，我们将进行 Level 2 的毕业设计。)
 ``````
 
 ---
