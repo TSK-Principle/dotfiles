@@ -763,18 +763,251 @@ awslocal lambda create-function \
 
 User-9:
 ``````text
+~/cloud-study via py v3.13.5 (venv) on aws (us-east-1) took 4s
+> awslocal lambda create-function \
+          --function-name my-func \
+          --runtime python3.10 \
+          --zip-file fileb://function.zip \
+          --handler func.handler \
+          --role arn:aws:iam::000000000000:role/test-role
+{
+    "FunctionName": "my-func",
+    "FunctionArn": "arn:aws:lambda:us-east-1:000000000000:function:my-func",
+    "Runtime": "python3.10",
+    "Role": "arn:aws:iam::000000000000:role/test-role",
+    "Handler": "func.handler",
+    "CodeSize": 224,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2026-02-07T06:29:13.695536+0000",
+    "CodeSha256": "Y5I2r+Y0RIkYF/Eigd/YQkGHKIEHBH21XkaUiLW3AK8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "40863100-41ab-41eb-b432-b2179b78f180",
+    "State": "Pending",
+    "StateReason": "The function is being created.",
+    "StateReasonCode": "Creating",
+    "PackageType": "Zip",
+    "Architectures": [
+        "x86_64"
+    ],
+    "EphemeralStorage": {
+        "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
+    },
+    "RuntimeVersionConfig": {
+        "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:8eeff65f6809a3ce81507fe733fe09b835899b99481ba22fd75b5a7338290ec1"
+    },
+    "LoggingConfig": {
+        "LogFormat": "Text",
+        "LogGroup": "/aws/lambda/my-func"
+    }
+}
+
+~/cloud-study via py v3.13.5 (venv) on aws (us-east-1) took 5s
+>
 ``````
 Model-9:
 ``````markdown
+太棒了！🎉 看到那一大串 JSON 代码，就说明你的第一个“云大脑”已经诞生了。
+
+注意看 `State: Pending`（等待中）和 `StateReason: Creating`（正在创建）。在真正的 AWS 里，这可能需要几秒钟准备；在 LocalStack 里，它通常也很快。
+
+现在代码已经上传了，但它还静静地躺在那儿，什么都没做。我们需要“戳”它一下，让它跑起来。这在云术语里叫 **Invoke (调用)**。
+
+---
+
+## Level 2 - 第 2 课：唤醒你的代码 (Invoke)
+
+### 🎓 概念讲解
+
+1. **调用 (Invoke)**：就像你按遥控器按钮一样。你可以手动按（手动调用），也可以设置定时器自动按（定时任务），还可以让别的程序按（API 调用）。
+2. **同步 vs 异步**：
+* **同步 (RequestResponse)**：你喊它一声，你就站在那儿等，直到它回话。
+* **异步 (Event)**：你喊它一声，转身就走，它跑完会把结果记在日志里。
+* 我们今天用**同步**，因为我们要立刻看到结果。
+
+
+3. **Payload (载荷)**：这是你发给函数的“参数”。虽然我们现在的函数很简单，不看参数，但 AWS CLI 总是会把结果存到一个文件里，而不是直接显示在屏幕上（这点和 Python 不一样）。
+
+---
+
+### 🛠️ 实战作业：第一次运行
+
+#### ✅ Checkpoint 1: 发送指令
+
+我们要命令云端运行 `my-func`，并且把它说的话，记在一个叫 `response.json` 的文件里。
+
+输入：
+
+```bash
+awslocal lambda invoke --function-name my-func response.json
+
+
+```
+
+> **预期结果：**
+> 你会看到一段像这样的简短回复，只要 `StatusCode` 是 `200`，就说明命令发送成功了：
+> ```json
+> {
+>     "StatusCode": 200,
+>     "ExecutedVersion": "$LATEST"
+> }
+> 
+> ```
+> 
+> 
+
+#### ✅ Checkpoint 2: 查看云的回信
+
+刚才那步只是告诉你“云收到了命令”。真正的运行结果（我们在 Python 里写的 `return "Hello..."`）被保存在了 `response.json` 文件里。
+
+让我们看看文件里写了什么：
+
+```bash
+cat response.json
+
+
+```
+
+---
+
+### 📤 提交作业
+
+请把 **Checkpoint 2** 的输出结果复制给我。
+
+> **预期结果：** 你应该能看到带着双引号的 `"Hello from Level 2!"`。
+
+(如果你看到了这句话，说明你已经成功完成了从“上传代码”到“远程执行”的闭环！下一节，我们要让这个函数变得更聪明一点——学会“读入数据”。)
 ``````
 
 ---
 
 User-10:
 ``````text
+cloud-study on git main Modified  via py v3.13.5 (venv) on aws (us-east-1)
+> awslocal lambda invoke --function-name my-func response.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+…main Modified Untracked  via py v3.13.5 (venv) on aws (us-east-1) took 2s
+> cat response.json
+"Hello from Level 2!"⏎
+
+… on git main Modified Untracked  via py v3.13.5 (venv) on aws (us-east-1)
+>
 ``````
 Model-10:
 ``````markdown
+太棒了！🎉 看到那个 `"Hello from Level 2!"` 了吗？这意味着你的云函数已经成功运行了一次。
+
+现在你的函数有点像个只会说一句台词的鹦鹉。不管怎么叫它，它都只会说 "Hello from Level 2!"。
+在这一节，我们要把它变成一个**智能管家**。你给它不同的指令（比如名字），它会给你不同的回应。
+
+---
+
+## Level 2 - 第 3 课：让函数变得“听话” (处理输入)
+
+### 🎓 概念讲解
+
+1. **Event (事件/输入)**：这是我们传给函数的“参数”。在 Python 代码里，就是那个 `handler(event, context)` 里的 `event`。它通常是一个字典（Dictionary/JSON）。
+2. **Update (更新)**：我们不需要删掉函数重写，我们可以直接“热更新”它的代码。这在开发中非常常用。
+3. **Payload (载荷)**：这指的是我们在调用函数时，随手递给它的那张“小纸条”（数据）。
+
+---
+
+### 🛠️ 实战作业：升级你的代码
+
+#### ✅ Checkpoint 1: 解决一个小麻烦 (配置 CLI)
+
+AWS CLI v2 有个小脾气，发数据时喜欢让人用“Base64编码”。为了让我们能直接发送普通的文字，我们要先在这个终端里改个设置（这是永久生效的，以后就不用管了）。
+
+输入：
+
+```bash
+aws configure set cli_binary_format raw-in-base64-out
+
+
+```
+
+*(这一步没有任何输出，就是最好的结果)*
+
+#### ✅ Checkpoint 2: 修改代码
+
+我们要修改 `func.py`。
+这次我们要让它去读 `event` 里的 `name` 字段。如果没给名字，就默认叫 "World"。
+
+输入：
+
+```bash
+echo 'def handler(event, context): return "Hello " + event.get("name", "World")' > func.py
+
+
+```
+
+*(解释：`event.get("name", "World")` 的意思是：尝试找 "name"，找不到就用 "World" 代替。)*
+
+#### ✅ Checkpoint 3: 重新打包并更新云端
+
+代码改了，必须重新压缩，并推送到云端覆盖旧版本。
+
+**先压缩：**
+
+```bash
+zip function.zip func.py
+
+
+```
+
+**再更新 (注意这里用的是 update-function-code，不是 create)：**
+
+```bash
+awslocal lambda update-function-code --function-name my-func --zip-file fileb://function.zip
+
+
+```
+
+> **预期结果：** 你会再次看到一大串 JSON，只要 `LastModified` 时间变了，就说明更新成功。
+
+#### ✅ Checkpoint 4: 带参数调用 (见证奇迹)
+
+现在我们要给它传个名字，比如传个 "Brother"（哥哥）。
+
+输入：
+
+```bash
+awslocal lambda invoke --function-name my-func --payload '{"name": "Brother"}' response.json
+
+
+```
+
+#### ✅ Checkpoint 5: 检查结果
+
+看看它有没有听懂你的话。
+
+```bash
+cat response.json
+
+
+```
+
+---
+
+### 📤 提交作业
+
+请把 **Checkpoint 5** 的输出结果复制给我。
+
+> **预期结果：** 之前是 `"Hello from Level 2!"`，现在应该变成了 `"Hello Brother"`。
+
+(如果成功，下一节我们将进入更高级的领域——让云函数去操作你的 S3 存储桶，实现“云端联动”！)
 ``````
 
 ---
