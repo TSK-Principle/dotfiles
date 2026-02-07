@@ -13,6 +13,7 @@
 - [ ] 偶尔去搜索引擎搜索白嫖ai
 - [ ] 偶尔打包github上最新更新的(不管Star数量)别人的dotfiles仓库给AI进行研究和吸取经验.
 - [ ] 问完一个问题开下一个窗口（新建对话）” 绝对更节省 Token(相对的也就是不节省token的方法是在单个聊天里面追问)
+- [ ] 可以考虑用最顶级的模型进行初问然后将上下文保存下来交给gemini等容易白嫖的次顶级模型进行追问，这样比较省token
 
 ### 🏃 Running
 - [ ] Get one month of access to [Hyperskill](https://hyperskill.org) for sprint learning Java Spring through [JetBrains Free Git Starter Pack](https://lp.jetbrains.com/free-git-starter-pack)
