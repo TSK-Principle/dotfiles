@@ -4,7 +4,6 @@
 awk '
   BEGIN { RS="---\n"; ORS="\0" }
   NF { sub(/\n$/, ""); print }
-' "$HOME/.config/tmux/scripts/quick-commands/quick-commands.txt" \
-| fzf --read0 --reverse --border=none --prompt="Copy > " \
+' "$HOME/.config/tmux/scripts/quick-prompts/quick-prompts.txt" \
+| fzf --read0 --reverse --border=none --prompt="Prompt > " \
 | tmux load-buffer -w -
-
