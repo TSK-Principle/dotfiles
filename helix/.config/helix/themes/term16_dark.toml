@@ -1,0 +1,8 @@
+inherits = "term16_dark"
+
+# 2. 覆盖代码补全菜单的配色
+# ui.menu: 未选中的候选项背景和文字
+"ui.menu" = { fg = "#a8a8a8", bg = "#1c1c1c" } 
+
+# ui.menu.selected: 当前选中的候选项（高亮）
+"ui.menu.selected" = { fg = "#ffffff", bg = "#5f00d7", modifiers = ["bold"] }
