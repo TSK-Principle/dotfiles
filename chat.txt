@@ -1,0 +1,23 @@
+
+dotfiles on git main on aws (us-east-1) took 22s
+< curl https://openrouter.ai/api/v1/chat/completions \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+        -d '{
+    "model": "openai/gpt-5.2",
+    "messages": [
+      {
+        "role": "user",
+        "content": "你好"
+      }
+    ]
+  }'
+
+
+
+
+
+{"id":"gen-1770533110-74TDasMFdZBcVemQJz9b","provider":"OpenAI","model":"openai/gpt-5.2","object":"chat.completion","created":1770533110,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"completed","index":0,"message":{"role":"assistant","content":"你好！需要我帮你做什么？你可以告诉我你的问题、想要的结果，以及相关背景（比如主题、用途、字数/格式要求）。","refusal":null,"reasoning":null}}],"usage":{"prompt_tokens":7,"completion_tokens":39,"total_tokens":46,"cost":0.00055825,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0},"cost_details":{"upstream_inference_cost":0.00055825,"upstream_inference_prompt_cost":0.00001225,"upstream_inference_completions_cost":0.000546},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}⏎
+
+dotfiles on git main on aws (us-east-1) took 5s
+
