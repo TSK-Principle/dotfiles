@@ -27,7 +27,6 @@ https://minecraft.wiki
 https://www.reddit.com/r/commandline/
 https://repology.org
 # Githubs
-https://github.com/f/awesome-chatgpt-prompts
 https://github.com/hiddify/hiddify-core
 https://github.com/ollama/ollama
 https://github.com/openwrt
