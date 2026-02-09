@@ -6,6 +6,7 @@ https://perplexity.ai
 https://arena.ai
 https://github.com/copilot
 https://aistudio.google.com
+https://artificialanalysis.ai/leaderboards/models
 
 # Bookmarks
 https://www.dropbox.com/scl/fo/mzqbrqj9qaquo8iycnq5h/AJl_DXmlmchpoKoOjRliY9w?rlkey=0foypwdkof8447qeqej4r6ara&st=fzkq137f&dl=0
@@ -22,7 +23,6 @@ https://alternativeto.net
 https://nf.video
 https://yeka.ai
 https://offer.gfjianli.com
-https://artificialanalysis.ai/leaderboards/models
 https://digitalocean.com
 https://minecraft.wiki
 https://www.reddit.com/r/commandline/
