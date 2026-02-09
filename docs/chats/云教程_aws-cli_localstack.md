@@ -1167,6 +1167,183 @@ User-12:
 ``````
 Model-12:
 ``````markdown
+太棒了！🎉
+看到那个 `"1000 USD\n"`，说明你的 Python 代码成功“穿透”了服务边界，从 S3 桶里把文件抓出来了。这在云架构里叫 **“服务集成 (Service Integration)”**，是云工程师的高级技能之一。
+
+现在，我们到了 Level 2 的最后关卡。我们要把你学到的所有东西结合起来，做一个真正的“业务系统”。
+
+---
+
+## Level 2 毕业设计：云端银行自动利息计算器
+
+### 🎓 场景设定
+
+你是“云端银行”的后端工程师。
+客户（你自己）往银行账户（S3 存储桶）里存了一笔钱。
+你需要写一个程序（Lambda），自动读取余额，给客户加上 10% 的利息，然后告诉客户现在的总资产。
+
+---
+
+### 🛠️ 实战作业
+
+#### ✅ Checkpoint 1: 存入本金
+
+为了方便计算，我们先把 `money.txt` 里的内容改成纯数字。
+请在终端输入：
+
+```bash
+echo "1000" > money.txt
+awslocal s3 cp money.txt s3://my-wallet
+
+```
+
+#### ✅ Checkpoint 2: 编写“银行家”算法
+
+我们要重写 `func.py`。这次的代码不仅要**读文件**，还要进行**数学运算**。
+
+请**直接复制**下面这整段命令（注意不要漏掉单引号）：
+
+```bash
+echo 'import boto3
+
+def handler(event, context):
+    # 1. 连接银行金库 (S3)
+    s3 = boto3.client("s3", endpoint_url="http://localhost:4566")
+    
+    # 2. 取出余额
+    obj = s3.get_object(Bucket="my-wallet", Key="money.txt")
+    data = obj["Body"].read().decode("utf-8").strip()
+    
+    # 3. 计算利息 (乘以 1.1)
+    money = int(data)
+    total = int(money * 1.1)
+    
+    # 4. 汇报结果
+    return f"Rich! You now have {total} USD"' > func.py
+
+```
+
+*(解释：这段代码读出 "1000"，把它变成数字，乘以 1.1 变成 1100，最后拼接成一句话返回。)*
+
+#### ✅ Checkpoint 3: 部署更新
+
+这是最后一次打包了，动作要快，姿势要帅。
+
+```bash
+zip function.zip func.py
+awslocal lambda update-function-code --function-name my-func --zip-file fileb://function.zip
+
+```
+
+#### ✅ Checkpoint 4: 运行计算器
+
+现在，见证你的钱“生钱”的时刻。
+
+```bash
+awslocal lambda invoke --function-name my-func response.json
+
+```
+
+#### ✅ Checkpoint 5: 查看账户余额
+
+```bash
+cat response.json
+
+```
+
+> **预期结果：** 你应该能看到 `"Rich! You now have 1100 USD"`。
+> 如果看到了，说明你的代码逻辑（S3读取 + Python计算 + Lambda返回）全部跑通了！
+
+---
+
+### 🧹 课后大扫除：销毁计算资源
+
+在 Level 1 我们学了删桶。在 Level 2 结束前，我们要学会**删函数**。
+虽然 Lambda 不运行不收费，但在真实环境里，不用的代码留着是安全隐患。
+
+#### ✅ Checkpoint 6: 删除函数
+
+```bash
+awslocal lambda delete-function --function-name my-func
+
+```
+
+*(这个命令通常没有输出，没有消息就是好消息)*
+
+---
+
+### 🎓 毕业典礼：Level 2 结业
+
+等你提交 **Checkpoint 5** 的输出结果（那句关于 1100 USD 的话），我就为你颁发 **Level 2 毕业证书**。
+
+**请提交：**
+
+1. Checkpoint 5 的输出结果。
+
+(等你提交后，我们就可以结束今天的课程了，或者如果你还有精力，我们可以聊聊下一步是学什么。)
+``````
+
+---
+
+User-13:
+``````text
+``````
+Model-13:
+``````markdown
+``````
+
+---
+
+User-14:
+``````text
+``````
+Model-14:
+``````markdown
+``````
+
+---
+
+User-15:
+``````text
+``````
+Model-15:
+``````markdown
+``````
+
+---
+
+User-16:
+``````text
+``````
+Model-16:
+``````markdown
+``````
+
+---
+
+User-17:
+``````text
+``````
+Model-17:
+``````markdown
+``````
+
+---
+
+User-18:
+``````text
+``````
+Model-18:
+``````markdown
+``````
+
+---
+
+User-19:
+``````text
+``````
+Model-19:
+``````markdown
 ``````
 
 ---
