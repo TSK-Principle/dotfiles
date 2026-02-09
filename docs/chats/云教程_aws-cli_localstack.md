@@ -1158,23 +1158,6 @@ cat response.json
 
 User-12:
 ``````text
- … main Deleted Modified  via py v3.13.5 (venv) on aws (us-east-1) took 29s
-
-< cat func.py
-
-import boto3
-
-
-def handler(event, context):
-
-    s3 = boto3.client("s3"); #必须要去掉endpoint_url否则会报错
-
-    response = s3.get_object(Bucket = "my-wallet", Key = "money.txt")
-
-    content = response["Body"].read().decode("utf-8")
-
-    return content
-
  …t main Deleted Modified  via py v3.13.5 (venv) on aws (us-east-1) took 4s
 
 > cat response.json
@@ -1184,96 +1167,6 @@ def handler(event, context):
 ``````
 Model-12:
 ``````markdown
-太棒了！🎉
-
-首先，我要**特别表扬**你。你不仅完成了任务，还自己解决了一个非常棘手的技术问题！
-
-> **你发现的那个细节非常关键：**
-> 你去掉了 `endpoint_url`，这是完全正确的。
-> **为什么？**（给未来的云架构师的小知识）
-> * 当我们在终端敲 `aws` 命令时，我们是在**外部**（宿主机），所以需要告诉命令去连 `localhost:4566`。
-> * 但是，当代码在 **Lambda 内部** 运行时，它已经是在云（Docker 容器）里面了。LocalStack 很聪明，它会自动告诉里面的 Python 代码：“嘿，我就在你旁边，不需要绕路去找 localhost”。
-> * 能意识到并修正这一点，说明你已经具备了**调试（Debug）** 的直觉，这是工程师最宝贵的能力。
-> 
-> 
-
-看到 `1000 USD` 被成功读出来，意味着你已经打通了 **S3（存储）** 和 **Lambda（计算）** 的任督二脉。
-
-为了庆祝你 Level 2 毕业，我们来进行最后的仪式：**清理战场**。
-（千万别觉得烦，养成“用完即删”的习惯，未来你会感谢我的，因为在真云上，忘记关掉的 Lambda 和 S3 都是要收钱的。）
-
----
-
-## 🎓 Level 2 毕业典礼：清理计算资源
-
-### 🛠️ 实战作业：销毁一切
-
-#### ✅ Checkpoint 1: 移除“云大脑” (删除 Lambda)
-
-我们要把这个函数删掉，防止它占用名额。
-
-```bash
-awslocal lambda delete-function --function-name my-func
-
-```
-
-*(通常不会有输出，或者输出很少，没有报错就是成功)*
-
-#### ✅ Checkpoint 2: 清理“云硬盘” (清空并删除 S3)
-
-像 Level 1 一样，我们先把文件删了，再把桶删了。
-
-```bash
-awslocal s3 rm s3://my-wallet/money.txt
-awslocal s3 rb s3://my-wallet
-
-```
-
-#### ✅ Checkpoint 3: 打扫本地垃圾
-
-你的电脑文件夹里现在应该有一堆乱七八糟的 `func.py`, `function.zip`, `response.json`。我们把它们也清理干净，还你一个清爽的 `cloud-study` 文件夹。
-
-```bash
-rm func.py function.zip response.json
-
-```
-
-#### ✅ Checkpoint 4: 最终核查
-
-确认一下云端是否真的空了。
-
-```bash
-awslocal lambda list-functions
-awslocal s3 ls
-
-```
-
-> **预期结果：**
-> * `list-functions` 应该显示 ` "Functions": []` (空的列表)。
-> * `s3 ls` 应该什么都不显示。
-> 
-> 
-
----
-
-### 📤 提交毕业申请
-
-请把 **Checkpoint 4** 的输出结果发给我。
-
-一旦确认清理干净，我就为你颁发 **Level 2 徽章**。
-
----
-
-### 🔮 剧透：Level 3 玩什么？
-
-在你提交作业的时候，可以顺便想一想：
-现在我们有了 **Lambda (代码/大脑)**，虽然很厉害，但每次运行它都要敲一行复杂的命令行 `awslocal lambda invoke...`，这太麻烦了。
-
-在 **Level 3**，我们将引入 **API Gateway (网关)**。
-它的作用是给你的 Lambda 函数配一个 **URL 网址**。
-这样，全世界任何人（或者只是你自己），只需要在浏览器里输一个网址，或者用手机发一个请求，就能触发你的 Lambda 代码。这才是现代互联网应用（App/Web）真正的后端形态！
-
-等你提交完清理结果，我们就向 Level 3 进发！🚀
 ``````
 
 ---
