@@ -1287,18 +1287,195 @@ awslocal lambda delete-function --function-name my-func
 
 User-13:
 ``````text
+…oud-study on git main Untracked  via py v3.13.5 (venv) on aws (us-east-1)
+> awslocal lambda invoke --function-name my-func response.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+…y on git main Untracked  via py v3.13.5 (venv) on aws (us-east-1) took 3s
+> cat response.json
+"Rich! You now have 1100 USD"⏎
 ``````
 Model-13:
 ``````markdown
+太棒了！🎉 看到那句 `"Rich! You now have 1100 USD"`，我简直想为你鼓掌。
+
+你刚刚不仅写了一段代码，你搭建了一个**“云端银行系统”**的原型！
+虽然它很简陋，但它包含了现代云应用的核心逻辑：**数据存储 (S3) + 业务逻辑 (Lambda) + 自动计算**。
+
+我现在正式宣布：**你已经从“零成本云工程师” Level 2 课程毕业了！** 🎓
+
+---
+
+### 🏆 毕业总结：你现在的能力值
+
+在 Level 2 中，你解锁了云工程师最重要的技能树——**计算 (Compute)**：
+
+1. **无服务器 (Serverless)**：你学会了如何不买服务器也能跑代码 (Lambda)。
+2. **云端编程 (Boto3)**：你学会了用 Python 代码去指挥云服务（让代码去读 S3）。
+3. **热更新**：你学会了如何在不关机的情况下，把旧代码替换成新逻辑。
+4. **调试**：你学会了通过 `response.json` 查看云端的运行结果。
+
+---
+
+### 🧹 最后确认
+
+在之前的步骤中，我提到了 **Checkpoint 6: 删除函数**。
+如果你还没执行，请务必执行一下，养成“随手关灯”的好习惯：
+
+```bash
+awslocal lambda delete-function --function-name my-func
+
+```
+
+*(如果执行了报错说 `ResourceNotFoundException`，说明你已经删过了，那就更棒了！)*
+
+---
+
+### 🌟 下一步：Level 3 预告
+
+你已经有了**硬盘 (S3)**，也有了**大脑 (Lambda)**。
+但是，如果你想做一个真正的像“淘宝”或“微信”那样的应用，你还缺一样东西——**记事本 (Database)**。
+
+S3 适合存大文件（图片、视频），但如果你要存用户信息、订单记录这种琐碎的数据，你需要一个更快、更强的工具。
+
+**Level 3 我们将进入：数据库 (Database - DynamoDB)**。
+我们要学习如何用毫秒级的速度存取数据，那是高性能云应用的核心。
+
+**现在的选择权在你：**
+
+* **选项 A**：休息！今天学了 Lambda 已经很烧脑了，我需要消化一下。
+* **选项 B**：继续！我对数据库很好奇，我想一口气把“计算+存储+数据库”这三驾马车都集齐。
+
+(告诉我你的选择，或者直接去向你哥哥炫耀一下你的“云端银行”！)
 ``````
 
 ---
 
 User-14:
 ``````text
+继续
 ``````
 Model-14:
 ``````markdown
+太棒了！你的学习热情简直像服务器过热一样滚烫！🔥
+
+欢迎来到 **Level 3：数据库 (Database)**。
+
+这一关我们要学习 AWS 最著名的数据库：**DynamoDB**。
+
+### 🎓 概念讲解：为什么要用数据库？
+
+你可能会问：“我有 S3 存文件了，为什么还要数据库？”
+
+* **S3 (仓库)**：适合存大件物品。比如存一张照片、一个视频、或者一个巨大的备份文件。每次取东西都要整个搬出来，比较慢。
+* **DynamoDB (账本)**：适合存**琐碎但高频**的信息。比如用户的余额、游戏的分数、购物车里的商品。它的特点是**极快**（毫秒级），而且随存随取。
+
+想象一下：S3 是银行的金库（存金条），DynamoDB 是柜员手里的那个电子账本（记数字）。
+
+---
+
+## Level 3 - 第 1 课：创建你的第一张“账本”表
+
+在 DynamoDB 里，我们不叫“库”，我们叫**表 (Table)**。
+每一行数据叫 **Item (项目)**。
+每一列属性叫 **Attribute (属性)**。
+最重要的是，每张表必须有一个唯一的身份证号，叫 **Partition Key (分区键)**。
+
+### 🛠️ 实战作业
+
+请确保你的 LocalStack 还在运行 (`localstack start -d` 那个状态)。
+
+#### ✅ Checkpoint 1: 创建表格
+
+我们要创建一个叫 `BankLedger` (银行账本) 的表。
+这张表只需要定义一个规则：**“用户名 (User)”是唯一的身份证。**
+
+请**直接复制**下面这整块命令（这是 AWS CLI 里最长最吓人的命令之一，别怕，直接贴）：
+
+```bash
+awslocal dynamodb create-table \
+    --table-name BankLedger \
+    --attribute-definitions AttributeName=User,AttributeType=S \
+    --key-schema AttributeName=User,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+
+```
+
+> **命令大揭秘：**
+> * `AttributeType=S`：意思是你这个 User 字段是 **String (字符串/文字)**。
+> * `KeyType=HASH`：意思是这个 User 是**主键 (唯一的)**。
+> * `provisioned-throughput`：这是设置读写速度的，在 LocalStack 里随便设个 5 就行。
+> 
+> 
+
+#### ✅ Checkpoint 2: 确认账本已建立
+
+看看表是不是真的建好了。
+
+```bash
+awslocal dynamodb list-tables
+
+```
+
+> **预期结果：** 你应该能看到 `"BankLedger"` 在列表里。
+
+---
+
+## Level 3 - 第 2 课：开户与存钱 (写入数据)
+
+现在账本有了，它是空的。我们要往里面写第一笔数据。
+在 DynamoDB 里，这叫 `put-item`。
+
+### 🛠️ 实战作业
+
+#### ✅ Checkpoint 3: 写入第一笔数据
+
+我们要存入这样一个用户：
+
+* **User**: "MyBrother" (那是你哥哥的电脑，给他开个户)
+* **Balance**: 5000 (给他存 5000 块)
+* **VIP**: "Yes" (他是 VIP)
+
+注意：DynamoDB 的数据格式很特别，它需要你告诉它每个值是什么类型。
+
+* `"S"` 代表 String (文字)
+* `"N"` 代表 Number (数字)
+
+输入命令：
+
+```bash
+awslocal dynamodb put-item \
+    --table-name BankLedger \
+    --item '{"User": {"S": "MyBrother"}, "Balance": {"N": "5000"}, "VIP": {"S": "Yes"}}'
+
+```
+
+*(如果没有报错，通常没有任何输出，直接跳到下一行就是成功)*
+
+#### ✅ Checkpoint 4: 查账 (读取数据)
+
+现在我们要把刚才存的数据读出来验证一下。
+我们用 `get-item` 命令，只需要提供主键（User）就能瞬间查到。
+
+```bash
+awslocal dynamodb get-item \
+    --table-name BankLedger \
+    --key '{"User": {"S": "MyBrother"}}'
+
+```
+
+---
+
+### 📤 提交作业
+
+请把 **Checkpoint 4** 的输出结果复制给我。
+
+> **预期结果：** 你会看到一个 JSON 结构，里面明明白白地写着 MyBrother 有 5000 块钱。
+
+(只要你提交了这个，就证明你已经掌握了云端数据库最核心的“增”和“查”！下一节，我们要挑战更难的“改”——比如怎么给他的余额加钱。)
 ``````
 
 ---
