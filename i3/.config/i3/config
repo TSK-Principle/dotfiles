@@ -78,13 +78,7 @@ bar {
 }
 
 # --- 截图脚本 ---
-bindsym $mod+Shift+s exec --no-startup-id sh -c ' \
-    mkdir -p ~/Pictures/Screenshots && \
-    f=~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png && \
-    maim -s -u "$f" && \
-    xclip -selection clipboard -t image/png -i "$f" && \
-    notify-send "截图完成" "已保存文件并复制到剪贴板\n$f" \
-'
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 
 # --- 其他自启动 ---
 exec --no-startup-id ~/.config/i3/scripts/autostart.sh
