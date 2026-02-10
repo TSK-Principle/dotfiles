@@ -42,7 +42,6 @@
 - [ ] 大语言模型时代必备的网站
 - [ ] 修复网络工具,放弃移动设备供网
 - [ ] Learn v2ray shadowsocks clash
-- [ ] Learn 云
 - [ ] 租借算力通过ollama搭建Llama模型学习OpenAI API开发
 - [ ] Learn 若依
 - [ ] 准备命令行国际象棋
@@ -51,6 +50,7 @@
 - [ ] try openrouter(支持国内支付方式)
 - [ ] try s-ui
 - [ ] try mpd alternative mpv
+- [ ] Learn aws-cli/gcloud(消息队列)
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
@@ -67,6 +67,5 @@
 - [ ] Learn MacOS
 - [ ] Learn 磁盘分区与启动模式，挂载 (Mounting) 与 Chroot，引导加载程序，命令行联网或者底层工具联网，systemctl，时间
 - [ ] Learn arch linux install on VM
-- [ ] Learn aws-cli/gcloud
 - [ ] Learn openssl
 - [ ] Learn 学习
