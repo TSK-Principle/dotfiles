@@ -35,6 +35,7 @@ https://github.com/CHN-MuXin/MagiskModuleEnableChinaForVoTELtoPIxel
 https://github.com/yamadashy/repomix
 https://github.com/localstack/localstack
 https://github.com/hashicorp/terraform
+https://github.com/alireza0/s-ui
 # Store
 https://addons.mozilla.org/firefox/addon/ublock-origin/
 https://addons.mozilla.org/firefox/addon/immersive-translate/
