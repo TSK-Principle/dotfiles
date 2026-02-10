@@ -1482,9 +1482,119 @@ awslocal dynamodb get-item \
 
 User-15:
 ``````text
+…oud-study on git main Untracked  via py v3.13.5 (venv) on aws (us-east-1)
+> awslocal dynamodb get-item \
+          --table-name BankLedger \
+          --key '{"User": {"S": "MyBrother"}}'
+
+{
+    "Item": {
+        "VIP": {
+            "S": "Yes"
+        },
+        "Balance": {
+            "N": "5000"
+        },
+        "User": {
+            "S": "MyBrother"
+        }
+    }
+}
 ``````
 Model-15:
 ``````markdown
+太棒了！🎉
+看到 JSON 里那个 `"Balance": {"N": "5000"}` 了吗？这证明你的数据已经稳稳地写进了数据库。
+
+现在你已经学会了“开户（Create）”和“查账（Read）”。
+但在现实世界里，余额是会变的。如果你的哥哥花了钱，或者存了钱，我们需要**修改**这个数字。
+而且，如果他注销了账户，我们需要**删除**这条记录。
+
+这正是数据库最核心的 **CRUD** 操作的最后两步：Update（改）和 Delete（删）。
+
+---
+
+## Level 3 - 第 3 课：修改余额与销毁账户
+
+### 🎓 概念讲解
+
+1. **UpdateItem (修改)**：这是数据库最强大的功能之一。
+* 如果你用 `put-item`（就像刚才那样），它会把整行数据覆盖掉（比如如果不小心没写 VIP，VIP 字段就没了）。
+* 而 `update-item` 是**外科手术**。我们可以告诉数据库：“只把 Balance 改成 10000，别动 VIP 状态。”
+
+
+2. **DeleteTable (删表)**：数据库是按小时计费的，在这个课程里，我们永远坚持“用完即删”的原则。
+
+---
+
+### 🛠️ 实战作业：修改与清理
+
+#### ✅ Checkpoint 1: 给他一笔巨款 (修改数据)
+
+我们要用到 `update-item`。
+这个命令有点长，因为它包含了逻辑：*“找到 User 是 MyBrother 的行，把 Balance 设置为 10000”*。
+
+请**整块复制**下面的命令：
+
+```bash
+awslocal dynamodb update-item \
+    --table-name BankLedger \
+    --key '{"User": {"S": "MyBrother"}}' \
+    --update-expression "SET Balance = :newval" \
+    --expression-attribute-values '{":newval": {"N": "10000"}}' \
+    --return-values ALL_NEW
+
+```
+
+> **预期结果：**
+> 你会看到 `Attributes` 里显示 Balance 变成了 `"10000"`，而且 VIP 状态还在（说明没被覆盖）。
+
+#### ✅ Checkpoint 2: 销毁用户 (删除数据)
+
+现在我们要把这个用户删掉。
+
+```bash
+awslocal dynamodb delete-item \
+    --table-name BankLedger \
+    --key '{"User": {"S": "MyBrother"}}'
+
+```
+
+*(这个命令通常没有输出，它是沉默的杀手)*
+
+#### ✅ Checkpoint 3: 验证删除
+
+再查一次，看看他还在不在。
+
+```bash
+awslocal dynamodb get-item \
+    --table-name BankLedger \
+    --key '{"User": {"S": "MyBrother"}}'
+
+```
+
+> **预期结果：** 应该什么都不显示（或者只显示 `{}`），绝对看不到 "MyBrother" 了。
+
+#### ✅ Checkpoint 4: 拆除银行 (删除表)
+
+最后，我们要把整个账本（表）销毁。
+
+```bash
+awslocal dynamodb delete-table --table-name BankLedger
+
+```
+
+---
+
+### 🎓 毕业典礼：Level 3 结业
+
+等你提交 **Checkpoint 1** 的输出结果（证明你有 10000 块钱了），我就为你颁发 **Level 3 毕业证书**。
+
+**请提交：**
+
+1. Checkpoint 1 的输出结果。
+
+(等你提交后，我们就要进行最后的总结了。你已经集齐了云端开发的三大宝石：**存储、计算、数据库**。是时候想想接下来怎么把它们串起来了！)
 ``````
 
 ---
