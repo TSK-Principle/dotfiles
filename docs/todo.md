@@ -70,3 +70,4 @@
 - [ ] Learn arch linux install on VM
 - [ ] Learn openssl
 - [ ] Learn 学习
+- [ ] Learn Claude Code(等待大模型基础知识日期包含claude code诞生日期，或者直接用顶尖模型学习claude code)
