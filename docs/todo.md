@@ -54,6 +54,7 @@
 - [ ] Learn aws-cli/gcloud(消息队列)
 - [ ] Learn java命令行的使用
 - [ ] Learn python命令行的使用
+- [ ] Learn maven命令行的使用
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
