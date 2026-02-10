@@ -153,6 +153,42 @@ java -jar junit-platform-console-standalone.jar --class-path . --scan-class-path
 
 User-2:
 ``````text
+~/junit-course/lesson01 via java v21.0.10 on aws (us-east-1)
+> java -jar junit-platform-console-standalone.jar --class-path . --scan-class-path
+
+💚 Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+╷
+├─ JUnit Jupiter ✔
+│  └─ FirstTest ✔
+│     └─ onePlusOneIsTwo() ✔
+├─ JUnit Vintage ✔
+└─ JUnit Platform Suite ✔
+
+Test run finished after 177 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         1 tests found           ]
+[         0 tests skipped         ]
+[         1 tests started         ]
+[         0 tests aborted         ]
+[         1 tests successful      ]
+[         0 tests failed          ]
+
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.
+
+~/junit-course/lesson01 via java v21.0.10 on aws (us-east-1)
+> java -version
+openjdk version "21.0.10" 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Debian-1deb13u1)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Debian-1deb13u1, mixed mode, sharing)
 ``````
 Model-2:
 ``````markdown
