@@ -2,6 +2,8 @@ git add . && git commit -m "update" && git pull --rebase && git push
 ---
 sudo apt -y update && sudo apt -y upgrade
 ---
+FlClash > /dev/null 2>&1 & disown; copyq > /dev/null 2>&1 & disown
+---
 mvn --quiet compile exec:java -Dexec.mainClass="com.learning.Main"
 ---
 repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | xclip -selection clipboard -t text/uri-list
