@@ -20,7 +20,6 @@
 - [ ] Finish Grind75.
 - [ ] Learn Python/Java QA Automation
 - [ ] Finish Capstone Project
-- [ ] Implement AI clipboard translation (to English) in Sway
 - [ ] Use mDNS to establish an SSH connection
 - [ ] Use [RealWorld](https://github.com/gothinkster/realworld) || [Spring PetClinic](https://github.com/spring-projects/spring-petclinic) to write real enterprise-level code
 - [ ] Learn how to use Boss Zhipin
