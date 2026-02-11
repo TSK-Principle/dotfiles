@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-02-11T11:43:42.998Z",
+  "updatedAt": "2026-02-11T11:50:59.164Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T11:43:42.998Z",
+  "localUpdatedAt": "2026-02-11T11:50:59.164Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2026-02-11T11:26:46.325Z",
   "translationService": "siliconcloud",
@@ -16,12 +16,13 @@
   "inputTrailingTriggerKey": "space",
   "generalRule": {
     "selectionTranslation.add": {
-      "triggerMode": "mini",
-      "enableAutoRead": true,
+      "triggerMode": "direct",
+      "enableAutoRead": false,
       "urlPattern": {
         "matches": [],
         "excludeMatches": []
-      }
+      },
+      "enable": false
     },
     "imageRule.add": {
       "enableMangaFloatBall": false
@@ -40,27 +41,7 @@
   "enableInputTranslation": false,
   "isShowInputTranslationConsent": false,
   "translationUrlPattern": {
-    "matches": [
-      "www.google.com",
-      "www.youtube.com",
-      "alternativeto.net",
-      "github.com",
-      "huggingface.co",
-      "minecraft.wiki",
-      "www.digitalocean.com",
-      "fabricmc.net",
-      "vast.ai",
-      "www.reddit.com",
-      "x.com",
-      "meta.stackoverflow.com",
-      "news.ycombinator.com",
-      "stackoverflow.com",
-      "chatgpt.com",
-      "www.perplexity.ai",
-      "grok.com",
-      "poe.com",
-      "www.techinterviewhandbook.org"
-    ],
+    "matches": [],
     "excludeMatches": [
       "www.codecademy.com",
       "gemini.google.com",
@@ -180,18 +161,13 @@
     "paraphrase",
     "paragraph-summarizer-expert",
     "plain-english",
-    "tech",
-    "reddit",
     "bilingual-mix",
-    "paper",
-    "medical",
-    "github",
     "subliminal_lingo",
-    "web3"
+    "github"
   ],
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T11:45:06.043Z",
+    "exportedAt": "2026-02-11T11:51:10.595Z",
     "data": [
       {
         "id": "default",
@@ -834,7 +810,7 @@
           "zh-CN",
           "zh-TW"
         ],
-        "active": true,
+        "active": false,
         "i18ns": {
           "zh-CN": {
             "name": "科技",
@@ -1252,7 +1228,7 @@
           "zh-CN",
           "zh-TW"
         ],
-        "active": true,
+        "active": false,
         "i18ns": {
           "zh-CN": {
             "name": "Web3",
