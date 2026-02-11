@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-02-11T12:13:49.617Z",
+  "updatedAt": "2026-02-11T12:25:54.078Z",
   "isChangedAlwaysTranslatedUrls": false,
   "interfaceLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T12:13:49.617Z",
+  "localUpdatedAt": "2026-02-11T12:25:54.078Z",
   "generalRule": {
     "imageRule.add": {
       "enableMangaFloatBall": false
@@ -15,6 +15,9 @@
     },
     "subtitleRule.add": {
       "autoEnableSubtitle": true
+    },
+    "inputConfig.add": {
+      "autoLanguageEnable": false
     }
   },
   "customAiAssistants": [],
@@ -71,7 +74,7 @@
     "subtitleTranslateService": "babel-lite-free",
     "translationService": "babel-lite-free"
   },
-  "enableInputTranslationWithoutTriggerKey": true,
+  "enableInputTranslationWithoutTriggerKey": false,
   "pcFloatBall": {
     "enable": true,
     "enableSidePanel": true,
@@ -121,9 +124,12 @@
       "italics": false
     }
   },
+  "enableInputTranslation": true,
+  "isShowInputTranslationConsent": false,
+  "inputStartingTriggerKey": "/",
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T12:14:02.453Z",
+    "exportedAt": "2026-02-11T12:27:41.073Z",
     "data": [
       {
         "id": "default",
