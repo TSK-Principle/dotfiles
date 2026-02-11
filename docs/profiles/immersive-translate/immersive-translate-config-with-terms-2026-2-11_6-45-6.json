@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-02-11T11:31:03.696Z",
+  "updatedAt": "2026-02-11T11:43:42.998Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T11:31:03.696Z",
+  "localUpdatedAt": "2026-02-11T11:43:42.998Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2026-02-11T11:26:46.325Z",
   "translationService": "siliconcloud",
@@ -28,6 +28,9 @@
     },
     "subtitleRule.add": {
       "autoEnableSubtitle": true
+    },
+    "aiWriting.add": {
+      "enable": false
     }
   },
   "notificationShowTimes": {
@@ -146,9 +149,9 @@
     }
   },
   "translationServiceExpanded": {
-    "custom": false,
-    "pro": false,
-    "max": false
+    "custom": true,
+    "pro": true,
+    "max": true
   },
   "translationTheme": "grey",
   "translationThemePatterns": {
@@ -179,18 +182,16 @@
     "plain-english",
     "tech",
     "reddit",
-    "paper",
-    "legal",
-    "github",
     "bilingual-mix",
-    "ao3",
-    "design",
-    "web3",
-    "medical"
+    "paper",
+    "medical",
+    "github",
+    "subliminal_lingo",
+    "web3"
   ],
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T11:35:07.524Z",
+    "exportedAt": "2026-02-11T11:45:06.043Z",
     "data": [
       {
         "id": "default",
@@ -1251,7 +1252,7 @@
           "zh-CN",
           "zh-TW"
         ],
-        "active": false,
+        "active": true,
         "i18ns": {
           "zh-CN": {
             "name": "Web3",
