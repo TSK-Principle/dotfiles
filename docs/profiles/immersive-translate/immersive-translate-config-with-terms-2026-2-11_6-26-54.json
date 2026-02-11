@@ -1,17 +1,18 @@
 {
-  "updatedAt": "2026-01-27T12:52:46.588Z",
+  "updatedAt": "2026-02-11T11:26:46.325Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2026-01-27T12:52:46.588Z",
+  "localUpdatedAt": "2026-02-11T11:26:46.325Z",
   "interfaceLanguage": "zh-CN",
-  "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
+  "translationServiceChangedbyUserAt": "2026-02-11T11:26:46.325Z",
   "translationService": "siliconcloud",
   "userTranslationServices": {
     "translationService": "siliconcloud-free",
-    "inputTranslationService": "zhipu-free"
+    "inputTranslationService": "google-free",
+    "subtitleTranslateService": "babel-lite-free"
   },
   "customAiAssistants": [],
-  "inputTranslationService": "zhipu",
+  "inputTranslationService": "google",
   "inputTrailingTriggerKey": "space",
   "generalRule": {
     "selectionTranslation.add": {
@@ -21,6 +22,12 @@
         "matches": [],
         "excludeMatches": []
       }
+    },
+    "imageRule.add": {
+      "enableMangaFloatBall": false
+    },
+    "subtitleRule.add": {
+      "autoEnableSubtitle": true
     }
   },
   "notificationShowTimes": {
@@ -96,10 +103,10 @@
   },
   "translationServices": {
     "google-free": {
-      "visible": false
+      "visible": true
     },
     "bing-free": {
-      "visible": false
+      "visible": true
     },
     "zhipu-air-pro": {
       "visible": false
@@ -139,7 +146,9 @@
     }
   },
   "translationServiceExpanded": {
-    "custom": true
+    "custom": false,
+    "pro": false,
+    "max": false
   },
   "translationTheme": "grey",
   "translationThemePatterns": {
@@ -162,9 +171,11 @@
     ],
     "excludeMatches": []
   },
+  "enableInputTranslationWithoutTriggerKey": false,
+  "subtitleTranslateService": "babel-lite",
   "terms": {
     "version": 1,
-    "exportedAt": "2026-01-27T12:52:54.774Z",
+    "exportedAt": "2026-02-11T11:26:54.056Z",
     "data": [
       {
         "id": "default",
