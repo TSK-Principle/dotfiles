@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-02-11T11:58:44.962Z",
+  "updatedAt": "2026-02-11T12:13:49.617Z",
   "isChangedAlwaysTranslatedUrls": false,
   "interfaceLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T11:58:44.962Z",
+  "localUpdatedAt": "2026-02-11T12:13:49.617Z",
   "generalRule": {
     "imageRule.add": {
       "enableMangaFloatBall": false
@@ -62,12 +62,14 @@
     }
   },
   "translationServiceExpanded": {
-    "custom": true
+    "custom": true,
+    "pro": true
   },
-  "translationServiceChangedbyUserAt": "2026-02-11T11:56:37.312Z",
+  "translationServiceChangedbyUserAt": "2026-02-11T12:04:57.854Z",
   "subtitleTranslateService": "babel-lite",
   "userTranslationServices": {
-    "subtitleTranslateService": "babel-lite-free"
+    "subtitleTranslateService": "babel-lite-free",
+    "translationService": "babel-lite-free"
   },
   "enableInputTranslationWithoutTriggerKey": true,
   "pcFloatBall": {
@@ -108,9 +110,20 @@
     "upgradeShowLimit": 20,
     "isPc": true
   },
+  "translationService": "babel-lite",
+  "targetLanguage": "zh-CN",
+  "translationTheme": "none",
+  "translationThemePatterns": {
+    "none": {
+      "textColor": "#FF69B4",
+      "zoom": "0",
+      "weight": "0",
+      "italics": false
+    }
+  },
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T11:58:53.318Z",
+    "exportedAt": "2026-02-11T12:14:02.453Z",
     "data": [
       {
         "id": "default",
