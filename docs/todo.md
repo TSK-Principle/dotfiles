@@ -48,7 +48,6 @@
 - [ ] 准备命令行国际象棋
 - [ ] 理解ip a的输出
 - [ ] 制造多种git常见的问题并学会解决
-- [ ] try openrouter(支持国内支付方式)
 - [ ] try s-ui
 - [ ] try mpd alternative mpv
 - [ ] Learn aws-cli/gcloud(消息队列)
@@ -73,4 +72,3 @@
 - [ ] Learn arch linux install on VM
 - [ ] Learn openssl
 - [ ] Learn 学习
-- [ ] Learn Claude Code(等待大模型基础知识日期包含claude code诞生日期，或者直接用顶尖模型学习claude code)
