@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-02-11T12:39:27.466Z",
+  "updatedAt": "2026-02-11T12:53:40.911Z",
   "isChangedAlwaysTranslatedUrls": true,
   "interfaceLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T12:39:27.466Z",
+  "localUpdatedAt": "2026-02-11T12:53:40.911Z",
   "generalRule": {
     "imageRule.add": {
       "enableMangaFloatBall": false
@@ -129,7 +129,7 @@
   "enableInputTranslation": true,
   "isShowInputTranslationConsent": false,
   "inputStartingTriggerKey": "/",
-  "pcFloatBallMainBtnTooltipShownCount": 5,
+  "pcFloatBallMainBtnTooltipShownCount": 7,
   "translationLanguagePattern": {
     "matches": [
       "en"
@@ -141,12 +141,16 @@
     "excludeMatches": [
       "aistudio.google.com",
       "gemini.google.com",
-      "github.com"
+      "github.com/copilot*",
+      "poe.com",
+      "huggingface.co/chat*",
+      "www.perplexity.ai",
+      "arena.ai"
     ]
   },
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T12:40:07.659Z",
+    "exportedAt": "2026-02-11T12:54:00.643Z",
     "data": [
       {
         "id": "default",
