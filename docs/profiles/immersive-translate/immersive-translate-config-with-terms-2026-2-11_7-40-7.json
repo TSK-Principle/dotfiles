@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-02-11T12:25:54.078Z",
-  "isChangedAlwaysTranslatedUrls": false,
+  "updatedAt": "2026-02-11T12:39:27.466Z",
+  "isChangedAlwaysTranslatedUrls": true,
   "interfaceLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T12:25:54.078Z",
+  "localUpdatedAt": "2026-02-11T12:39:27.466Z",
   "generalRule": {
     "imageRule.add": {
       "enableMangaFloatBall": false
@@ -18,7 +18,9 @@
     },
     "inputConfig.add": {
       "autoLanguageEnable": false
-    }
+    },
+    "mouseHoverHoldKey": "MouseHoldKeyPressHold",
+    "mouseHoverPreferenceKey": "MouseHoldKeyPressHold"
   },
   "customAiAssistants": [],
   "aiAssistantIds": [
@@ -127,9 +129,24 @@
   "enableInputTranslation": true,
   "isShowInputTranslationConsent": false,
   "inputStartingTriggerKey": "/",
+  "pcFloatBallMainBtnTooltipShownCount": 5,
+  "translationLanguagePattern": {
+    "matches": [
+      "en"
+    ],
+    "excludeMatches": []
+  },
+  "translationUrlPattern": {
+    "matches": [],
+    "excludeMatches": [
+      "aistudio.google.com",
+      "gemini.google.com",
+      "github.com"
+    ]
+  },
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T12:27:41.073Z",
+    "exportedAt": "2026-02-11T12:40:07.659Z",
     "data": [
       {
         "id": "default",
