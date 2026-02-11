@@ -1,100 +1,32 @@
 {
-  "updatedAt": "2026-02-11T11:50:59.164Z",
-  "isChangedAlwaysTranslatedUrls": true,
-  "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2026-02-11T11:50:59.164Z",
+  "updatedAt": "2026-02-11T11:58:44.962Z",
+  "isChangedAlwaysTranslatedUrls": false,
   "interfaceLanguage": "zh-CN",
-  "translationServiceChangedbyUserAt": "2026-02-11T11:26:46.325Z",
-  "translationService": "siliconcloud",
-  "userTranslationServices": {
-    "translationService": "siliconcloud-free",
-    "inputTranslationService": "google-free",
-    "subtitleTranslateService": "babel-lite-free"
-  },
-  "customAiAssistants": [],
-  "inputTranslationService": "google",
-  "inputTrailingTriggerKey": "space",
+  "localUpdatedAt": "2026-02-11T11:58:44.962Z",
   "generalRule": {
-    "selectionTranslation.add": {
-      "triggerMode": "direct",
-      "enableAutoRead": false,
-      "urlPattern": {
-        "matches": [],
-        "excludeMatches": []
-      },
-      "enable": false
-    },
     "imageRule.add": {
       "enableMangaFloatBall": false
     },
-    "subtitleRule.add": {
-      "autoEnableSubtitle": true
+    "selectionTranslation.add": {
+      "enable": false
     },
     "aiWriting.add": {
       "enable": false
+    },
+    "subtitleRule.add": {
+      "autoEnableSubtitle": true
     }
   },
-  "notificationShowTimes": {
-    "new-guide": "1764400593226"
-  },
-  "pcFloatBallMainBtnTooltipShownCount": 37,
-  "enableInputTranslation": false,
-  "isShowInputTranslationConsent": false,
-  "translationUrlPattern": {
-    "matches": [],
-    "excludeMatches": [
-      "www.codecademy.com",
-      "gemini.google.com",
-      "aistudio.google.com"
-    ]
-  },
-  "pcFloatBall": {
-    "enable": true,
-    "enableSidePanel": true,
-    "enablePinSidePanel": true,
-    "transparency": 30,
-    "blockUrls": [
-      "*immersivetranslate.*/preview",
-      "*.immersivetranslate.*/download-subtitle*",
-      "dash.immersivetranslate.*/*"
-    ],
-    "guideBlockUrls": [
-      "https://immersivetranslate.*/accounts/login*",
-      "https://immersivetranslate.*/profile/",
-      "https://onboarding.immersivetranslate.**",
-      "https://*.immersivetranslate.*/*/intro/tutorial/step-1*",
-      "https://*.immersivetranslate.*/*/new-guide/step-1*",
-      "https://*.immersivetranslate.*/*/new-guide/step-2*"
-    ],
-    "guideContentBlockUrls": [
-      "https://*.immersivetranslate.*/*/tutorial/*",
-      "https://*.immersivetranslate.*/*/intro/*",
-      "https://*.immersivetranslate.*/*/init/*",
-      "https://*.immersivetranslate.*/*/new-guide/*"
-    ],
-    "guideArrowPermanentUrls": [
-      "https://*.immersivetranslate.*/*/intro/step-1",
-      "https://*.immersivetranslate.*/*/tutorial/step-2",
-      "https://*.immersivetranslate.*/*/new-guide/step-3"
-    ],
-    "defaultShowGuideNums": 4,
-    "clickType": "translate",
-    "afterInstalledAt": "2023-10-28",
-    "fixedPosition": "right",
-    "upgradeVisible": true,
-    "upgradeShowLimit": 20,
-    "isPc": true
-  },
+  "customAiAssistants": [],
+  "aiAssistantIds": [
+    "paraphrase",
+    "paragraph-summarizer-expert",
+    "plain-english",
+    "github",
+    "bilingual-mix",
+    "subliminal_lingo"
+  ],
   "translationServices": {
-    "google-free": {
-      "visible": true
-    },
-    "bing-free": {
-      "visible": true
-    },
-    "zhipu-air-pro": {
-      "visible": false
-    },
     "deepseek-pro": {
       "visible": false
     },
@@ -130,44 +62,55 @@
     }
   },
   "translationServiceExpanded": {
-    "custom": true,
-    "pro": true,
-    "max": true
+    "custom": true
   },
-  "translationTheme": "grey",
-  "translationThemePatterns": {
-    "grey": {
-      "zoom": "1",
-      "weight": "400",
-      "italics": false,
-      "textColor": "#FF69B4"
-    },
-    "dashedBorder": {
-      "borderRadius": "0",
-      "zoom": "57",
-      "italics": true
-    }
-  },
-  "selectTranslationFont": "Times New Roman",
-  "translationLanguagePattern": {
-    "matches": [
-      "en"
-    ],
-    "excludeMatches": []
-  },
-  "enableInputTranslationWithoutTriggerKey": false,
+  "translationServiceChangedbyUserAt": "2026-02-11T11:56:37.312Z",
   "subtitleTranslateService": "babel-lite",
-  "aiAssistantIds": [
-    "paraphrase",
-    "paragraph-summarizer-expert",
-    "plain-english",
-    "bilingual-mix",
-    "subliminal_lingo",
-    "github"
-  ],
+  "userTranslationServices": {
+    "subtitleTranslateService": "babel-lite-free"
+  },
+  "enableInputTranslationWithoutTriggerKey": true,
+  "pcFloatBall": {
+    "enable": true,
+    "enableSidePanel": true,
+    "enablePinSidePanel": true,
+    "transparency": 80,
+    "blockUrls": [
+      "*immersivetranslate.*/preview",
+      "*.immersivetranslate.*/download-subtitle*",
+      "dash.immersivetranslate.*/*"
+    ],
+    "guideBlockUrls": [
+      "https://immersivetranslate.*/accounts/login*",
+      "https://immersivetranslate.*/profile/",
+      "https://onboarding.immersivetranslate.**",
+      "https://*.immersivetranslate.*/*/intro/tutorial/step-1*",
+      "https://*.immersivetranslate.*/*/new-guide/step-1*",
+      "https://*.immersivetranslate.*/*/new-guide/step-2*",
+      "https://*.immersivetranslate.*/*/quickstart/*"
+    ],
+    "guideContentBlockUrls": [
+      "https://*.immersivetranslate.*/*/tutorial/*",
+      "https://*.immersivetranslate.*/*/intro/*",
+      "https://*.immersivetranslate.*/*/init/*",
+      "https://*.immersivetranslate.*/*/new-guide/*"
+    ],
+    "guideArrowPermanentUrls": [
+      "https://*.immersivetranslate.*/*/intro/step-1",
+      "https://*.immersivetranslate.*/*/tutorial/step-2",
+      "https://*.immersivetranslate.*/*/new-guide/step-3"
+    ],
+    "defaultShowGuideNums": 4,
+    "clickType": "translate",
+    "afterInstalledAt": "2023-10-28",
+    "fixedPosition": "left",
+    "upgradeVisible": true,
+    "upgradeShowLimit": 20,
+    "isPc": true
+  },
   "terms": {
     "version": 1,
-    "exportedAt": "2026-02-11T11:51:10.595Z",
+    "exportedAt": "2026-02-11T11:58:53.318Z",
     "data": [
       {
         "id": "default",
