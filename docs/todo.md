@@ -72,3 +72,4 @@
 - [ ] Learn arch linux install on VM
 - [ ] Learn openssl
 - [ ] Learn 学习
+- [ ] Learn 为了chatgpt和claude官网可用,学习搭建独立的代理节点(不再使用机场),并让linux设置非代理网络就禁止连接互联网,以减少封控
