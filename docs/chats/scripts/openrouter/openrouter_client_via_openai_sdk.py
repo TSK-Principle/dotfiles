@@ -1,4 +1,4 @@
-import os
+import sys,os
 from openai import OpenAI
 
 client = OpenAI(
@@ -11,7 +11,7 @@ completion = client.chat.completions.create(
   messages=[
     {
       "role": "user",
-      "content": "你好,你叫什么名字"
+      "content": sys.stdin.read()
     }
   ]
 )
