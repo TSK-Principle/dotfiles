@@ -55,6 +55,7 @@
 - [ ] Learn python命令行的使用
 - [ ] Learn maven命令行的使用
 - [ ] try 智力接近chatgpt4的极微小模型如Llama 3.2 1B
+- [ ] try Qwen 2.5 1.5B做成沉浸式翻译本地api
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
