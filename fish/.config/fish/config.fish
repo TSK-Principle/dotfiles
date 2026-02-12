@@ -42,6 +42,7 @@ alias nano hx
 alias zz "trans -b -sp :zh"
 alias xx "trans -b -sp :en"
 alias cc "trans -b :zh"
+
 function aa
     tmux save-buffer - | python3 $HOME/dotfiles/docs/chats/scripts/openrouter/openrouter_client_via_openai_sdk.py
 end
