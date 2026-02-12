@@ -33,11 +33,11 @@ fish_add_path ~/go/bin
 alias cat 'batcat --paging=never --style="plain"'
 alias ls 'eza --git'
 alias l 'eza --git'
-alias ll 'eza -l --git --header'
 alias la 'eza -a --git'
-alias lla 'eza -la --git --header'
-alias lt 'eza --tree'
-alias lta 'eza --tree -a'
+alias ll 'eza -l --total-size --git --header'
+alias lla 'eza -la --total-size --git --header'
+alias lt 'eza --tree --total-size -l'
+alias lta 'eza --tree -a --total-size -l'
 alias nano hx
 alias zz "trans -b -sp :zh"
 alias xx "trans -b -sp :en"
