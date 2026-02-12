@@ -14,16 +14,5 @@ mkdir -p ~/Videos && wf-recorder --audio="$(pactl get-default-sink).monitor" -c 
 ---
 xxx > /dev/null 2>&1 &
 ---
-curl https://openrouter.ai/api/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -d '{
-  "model": "openrouter/free",
-  "messages": [
-    {
-      "role": "user",
-      "content": "你好请帮我写一段简单的java HelloWorld代码"
-    }
-  ]
-}' | jq -r '.choices[0].message.content' > "$HOME/dotfiles/docs/chats/buffer/chat_$(date +%Y%m%d_%H%M%S).md"
+echo "" | python3 $HOME/dotfiles/docs/chats/scripts/openrouter/openrouter_client_via_openai_sdk.py
 ---
