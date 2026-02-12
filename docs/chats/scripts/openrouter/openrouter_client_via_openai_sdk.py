@@ -2,15 +2,15 @@ from openai import OpenAI
 
 client = OpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="<OPENROUTER_API_KEY>",
+  api_key="",
 )
 
 completion = client.chat.completions.create(
-  model="openai/gpt-5.2",
+  model="openrouter/free",
   messages=[
     {
       "role": "user",
-      "content": "What is the meaning of life?"
+      "content": "你好,你叫什么名字"
     }
   ]
 )
