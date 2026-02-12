@@ -43,6 +43,9 @@ alias ii 'date && echo -n "Bat: " && cat /sys/class/power_supply/BAT*/capacity &
 alias zz "trans -b -sp :zh"
 alias xx "trans -b -sp :en"
 alias cc "trans -b :zh"
+function aa
+    echo $argv | python3 $HOME/dotfiles/docs/chats/scripts/openrouter/openrouter_client_via_openai_sdk.py
+end
 
 function check_mypublic_dir --on-variable PWD
     set target_dir "$HOME/MyPublic"
