@@ -39,7 +39,6 @@ alias lla 'eza -la --git --header'
 alias lt 'eza --tree'
 alias lta 'eza --tree -a'
 alias nano hx
-alias ii 'date && echo -n "Bat: " && cat /sys/class/power_supply/BAT*/capacity && hostname -I'
 alias zz "trans -b -sp :zh"
 alias xx "trans -b -sp :en"
 alias cc "trans -b :zh"
