@@ -54,6 +54,7 @@
 - [ ] Learn java命令行的使用
 - [ ] Learn python命令行的使用
 - [ ] Learn maven命令行的使用
+- [ ] try 智力接近chatgpt4的极微小模型如Llama 3.2 1B
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
