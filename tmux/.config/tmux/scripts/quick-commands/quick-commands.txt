@@ -25,5 +25,5 @@ curl https://openrouter.ai/api/v1/chat/completions \
       "content": "你好请帮我写一段简单的java HelloWorld代码"
     }
   ]
-}' | jq -r '.choices[0].message.content'
+}' | jq -r '.choices[0].message.content' > "$HOME/dotfiles/docs/chats/history/chat_$(date +%Y%m%d_%H%M%S).md"
 ---
