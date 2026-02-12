@@ -5,10 +5,10 @@ sudo sed -i 's/ main / main contrib /g' /etc/apt/sources.list
 sudo apt -y update && sudo apt -y upgrade
 
 # basic-debian
-sudo apt -y install git curl wget unzip network-manager htop picom fzf tmux keychain pass pass-otp oathtool stow gnupg ripgrep rclone mpv yt-dlp 7zip starship eza arp-scan sshfs jq pandoc ffmpeg openjdk-21-jdk maven htop nodejs npm bat gh pipx translate-shell
+sudo apt -y install git curl wget unzip network-manager htop picom fzf tmux keychain pass pass-otp oathtool stow gnupg ripgrep rclone mpv yt-dlp 7zip starship eza arp-scan sshfs jq pandoc ffmpeg openjdk-21-jdk maven htop nodejs npm bat gh translate-shell python3-pip
 
-# trafilatura
-pipx install trafilatura
+# pip package
+pip install --user openai trafilatura --break-system-packages
 
 # fish
 sudo apt -y install fish && sudo chsh -s "$(which fish)" "$USER"
