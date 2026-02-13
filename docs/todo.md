@@ -55,6 +55,7 @@
 - [ ] try 智力接近chatgpt4的极微小模型如Llama 3.2 1B
 - [ ] try Qwen 2.5 1.5B做成沉浸式翻译本地api
 - [ ] 能不能在shell的历史里面常驻一些命令这样我就能少写别名直接ctrl+r搜索运行就行了
+- [ ] 尝试让edraw.ai画原理图
 
 ### ⏳ Waiting
 - [ ] Exit Strategy
