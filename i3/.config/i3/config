@@ -5,8 +5,6 @@ set $mod Mod4
 # --- 字体与外观 ---
 font pango:monospace 8
 
-# [移除] picom, dex, nm-applet
-
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # --- 音量控制 (PulseAudio) ---
