@@ -12,7 +12,7 @@ pip install --user openai --break-system-packages
 
 # keyd
 sudo apt -y install keyd
-sudo ln -s $HOME/dotfiles/keyd/default.conf /etc/keyd/
+sudo ln -sf $HOME/dotfiles/keyd/default.conf /etc/keyd/
 sudo keyd.rvaiya reload
 
 # fish
