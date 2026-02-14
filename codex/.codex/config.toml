@@ -15,3 +15,9 @@ trust_level = "trusted"
 
 [projects."/home/free514dom/qwq"]
 trust_level = "trusted"
+
+[projects."/home/free514dom"]
+trust_level = "trusted"
+
+[projects."/home/free514dom/testdir"]
+trust_level = "trusted"
