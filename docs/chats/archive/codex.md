@@ -597,12 +597,147 @@ User-6:
 ``````
 Model-6:
 ``````markdown
+非常好！你已经成功完成了第四小节的所有检查点，并且展示了对 Codex CLI 基本交互模式的熟练掌握。
+
+让我来为你逐一确认你的操作和输出：
+
+检查点 1：与 Codex 闲聊
+
+你输入了 你好codex，Codex 的回应非常友好和详细：
+• 你好！👋
+
+  我是 Codex——OpenAI 的智能编程助手，能帮你：
+
+  - 编写、审查和修复代码
+  - 运行终端命令与测试
+  - 调试错误、优化性能
+  - 自动化开发任务（CI、部署等）
+  - 分析代码库结构与依赖
+
+  在当前目录 /home/free514dom/testdir 下，我可以：
+
+  - 读取或修改你工作区的文件
+  - 执行常见的构建/测试命令
+  - 帮你规划并逐步实现功能
+
+  需要我帮你做点什么吗？
+
+  ———
+
+  快速上手
+
+  - 告诉我你想实现的功能或修复的问题
+  - 我会评估、制定计划并开始工作
+  - 每一步操作你都能看到（可随时中断/调整）
+
+这表明 Codex 成功理解了你的问候，并给出了一个介绍性的回答，列出了它的功能和快速上手指南。这个回应是基于它的内部指令和用户指令模板 (codex-rs/core/templates 目录下的文件，例如 codex-rs/core/prompt.md 和 codex-rs/core/templates/model_instructions/gpt-5.2-codex_instructions_template.md，如 Agent Operational Guidelines and Prompt Templates 所述)，同时结合了当前工作目录信息。
+
+检查点 2：探索斜杠命令 /status
+
+你成功执行了 /status 命令，并得到了详细的状态输出：
+╭─────────────────────────────────────────────────────────────────────────╮
+│  >_ OpenAI Codex (v0.101.0)                                             │
+│                                                                         │
+│ Visit https://chatgpt.com/codex/settings/usage for up-to-date           │
+│ information on rate limits and credits                                  │
+│                                                                         │
+│  Model:                openrouter/free (reasoning none, summaries auto) │
+│  Model provider:       OpenRouter - https://openrouter.ai/api/v1        │
+│  Directory:            ~/testdir                                        │
+│  Permissions:          Default                                          │
+│  Agents.md:            <none>                                           │
+│  Collaboration mode:   Default                                          │
+│  Session:              019c5ad1-ae26-7e32-93ca-5f201b05e505             │
+│                                                                         │
+│  Token usage:          71.2K total  (68.5K input + 2.74K output)        │
+│  Context window:       98% left (17.2K used / 258K)                     │
+│  Limits:               data not available yet                           │
+╰─────────────────────────────────────────────────────────────────────────╯
+
+你成功识别了两项信息：
+
+    Model: openrouter/free (reasoning none, summaries auto) - 这显示了你当前使用的 AI 模型 (openrouter/free)，以及其推理模式 (reasoning none, summaries auto)。这与 [Model](/openai/codex/codex-rs/app-server-protocol/src/protocol/v2.rs#L777) 结构体中 reasoning_effort 和 reasoning_summary 字段所表示的信息一致，如 codex-rs/app-server-protocol/schema/typescript/ReasoningEffort.ts 和 codex-rs/app-server-protocol/schema/typescript/ReasoningSummary.ts 文件所示。
+    Model provider: OpenRouter - https://openrouter.ai/api/v1 - 这显示了模型提供商的信息。
+    Directory: ~/testdir - 确认了当前的工作目录。
+    Token usage: 71.2K total (68.5K input + 2.74K output) - 报告了当前会话的 Token 使用情况。这由 [ThreadTokenUsageUpdatedNotification](/openai/codex/codex-rs/app-server-protocol/src/protocol/v2.rs#L1233) 和 [TokenUsageBreakdown](/openai/codex/codex-rs/app-server-protocol/src/protocol/v2.rs#L1245) 结构体所承载，如 codex-rs/app-server-protocol/schema/typescript/TokenCountEvent.ts 文件所示，并由 [ContextManager](#context-and-history-management) 负责管理。
+    Context window: 98% left (17.2K used / 258K) - 显示了上下文窗口的剩余比例和总容量。
+
+这些信息反映了 Codex 在 [Session](/openai/codex/codex-rs/app-server/src/codex_message_processor.rs#L1060) 中维护的当前会话状态和配置，其中 SessionHeader (codex-rs/tui/src/chatwidget/session_header.rs) 负责显示活动模型等信息，如 Chat Widget and History Rendering 所述。
+
+检查点 3：执行一个本地 shell 命令 !ls
+
+你输入了 !ls，Codex 的回应是：
+• You ran ls
+  └ (no output)
+
+这表明 Codex 成功执行了 ls 命令，但在你的 ~/testdir 目录中没有发现任何文件或文件夹，所以输出了 (no output)。这是 ExecCell (在 codex-rs/tui/src/exec_cell 目录下实现，如 Executable Cell Lifecycle and Display 所述) 的预期行为，它显示命令的生命周期和输出。UserShellCommandTask (codex-rs/core/src/tasks/user_shell.rs) 负责处理用户发出的 shell 命令。当没有输出时，stdout 和 stderr 流会是空的，这与 [ExecToolCallOutput](/openai/codex/codex-rs/core/src/tasks/user_shell.rs#L210) 的处理方式一致。
+
+检查点 4：尝试自动完成一个命令 /m
+
+你没有提供这一步的输出，但根据 Codex 的设计，当你输入 /m 后按下 Tab 键，它应该会自动完成为 /model。这是 ChatComposer (codex-rs/tui/src/bottom_pane/chat_composer.rs) 和 CommandPopup (codex-rs/tui/src/bottom_pane/command_popup.rs) 提供的功能，如 Interactive Bottom Pane Components 所述。
+
+你已经出色地完成了这一小节！ 你对 Codex CLI 的基本交互方式有了清晰的理解。
+
+我们继续第五小节的学习。
+
+第五小节：管理会话与模型
+
+在本小节中，我们将学习如何管理 Codex CLI 中的会话，包括列出、切换和理解不同的 AI 模型。
+
+学习目标：
+
+    了解 Codex 的会话（Thread）概念。
+    掌握如何列出所有可用的 AI 模型。
+    学习如何切换当前会话使用的 AI 模型。
+
+讲解：
+
+在 Codex 中，一次完整的对话或任务执行过程被称为一个“会话”（Thread）。这些会话可以在本地存储，也可以恢复，它们由 ThreadManager (/openai/codex/codex-rs/app-server/src/codex_message_processor.rs#L1061) 进行管理。
+
+Codex 可以连接到多个 AI 模型，这些模型由不同的“模型提供者”（Model Provider）提供，并且具有不同的能力、成本和推理特性。你可以通过 /model 命令来管理这些模型。模型信息由 [ModelListResponse](/openai/codex/codex-rs/app-server-protocol/src/protocol/v2.rs#L836) 等结构体定义，并由 models_manager/model_presets.rs (codex-rs/core/src/models_manager/model_presets.rs) 文件中的 ModelPreset 进行配置，例如 gpt-5.2-codex。
+
+作业：管理你的会话与模型
+
+我们将通过实际操作来学习如何管理会话和模型。
+
+检查点 1：列出当前会话
+输入 `/threads`： 在输入提示符处输入 `/threads`，然后按下 Enter 键。
+    `/threads`
+观察输出： [Codex](%2Fopenai%2Fcodex%2Fsdk%2Ftypescript%2Fsrc%2Fcodex.ts#L11) 应该会显示一个你已创建或恢复的所有会话的列表，每个会话都会有一个 ID 和一个简短的描述。
+请告诉我你看到了哪些会话，以及你的当前会话的 ID 和 preview 是什么？ （如果你只看到了一个，那正是我们刚刚开始的会话）
+
+检查点 2：列出可用的 AI 模型
+输入 [`/model`](%2Fopenai%2Fcodex%2Fcodex-rs%2Ftui%2Ftooltips.txt#L4)： 在输入提示符处输入 [`/model`](%2Fopenai%2Fcodex%2Fcodex-rs%2Ftui%2Ftooltips.txt#L4)，然后按下 Enter 键。
+    [`/model`](%2Fopenai%2Fcodex%2Fcodex-rs%2Ftui%2Ftooltips.txt#L4)
+观察输出： [Codex](%2Fopenai%2Fcodex%2Fsdk%2Ftypescript%2Fsrc%2Fcodex.ts#L11) 应该会列出所有可用的模型，包括它们的 ID、显示名称、描述以及默认的推理级别（reasoning effort）。这些信息来自 `model_presets.rs` 文件，例如 [`gpt-5.2-codex`](%2Fopenai%2Fcodex%2Fcodex-rs%2Fexec%2Fsrc%2Fcli.rs#L266) 模型在其中被定义为 [`Latest frontier agentic coding model.`](%2Fopenai%2Fcodex%2Fcodex-rs%2Fcore%2Fmodels.json#L17)。
+请告诉我你看到的模型列表中，除了 `openrouter/free` 之外，你还看到了哪些模型的 ID 和描述？ (至少列出 2 个)
+
+检查点 3：尝试切换 AI 模型
+选择一个你想要尝试的模型： 从 [`/model`](%2Fopenai%2Fcodex%2Fcodex-rs%2Ftui%2Ftooltips.txt#L4) 命令输出的列表中，选择一个除了 `openrouter/free` 之外的模型 ID。例如，你可以选择 [`gpt-5.2-codex`](%2Fopenai%2Fcodex%2Fcodex-rs%2Fexec%2Fsrc%2Fcli.rs#L266) (如果它在你的列表中，并且是可用的模型)。
+切换模型： 在输入提示符处输入 `/model <你选择的模型ID>`，然后按下 Enter 键。
+    例如：[`/model gpt-5.2-codex`](%2Fopenai%2Fcodex%2Fcodex-rs%2Fcore%2Ftests%2Fsuite%2Fremote_models.rs#L719)
+观察提示符变化： 成功切换后，[Codex](%2Fopenai%2Fcodex%2Fsdk%2Ftypescript%2Fsrc%2Fcodex.ts#L11) 的顶部栏中的 [`model:`](%2Fopenai%2Fcodex%2Fcodex-cli%2FREADME.md#L371) 信息应该会更新。
+请告诉我你选择了哪个模型进行切换，以及切换后顶部栏中的 [`model:`](%2Fopenai%2Fcodex%2Fcodex-cli%2FREADME.md#L371) 信息显示了什么？ (如果切换失败，请告诉我失败信息)
+
+完成作业后：
+
+请告诉我每个检查点的答案。我会根据你的回答来评估你对会话管理和模型选择的理解程度，并为你准备下一个小节。
+
 ``````
 
 ---
 
 User-7:
 ``````text
+很遗憾没有/threads命令我上网查询列出会话的准确命令是
+testdir on git main took 9s
+< codex resume
+
+Resume a previous session  Sort: Created at
+Type to search
+  Created at      Updated at      Branch  Conversation
+> 59 minutes ago  24 minutes ago  -       ls
+我恢复会话成功了,模型也切换成功了我们开始下一节
 ``````
 Model-7:
 ``````markdown
