@@ -17,6 +17,7 @@
 - [ ] 等拿到offer工作稳定以后让ai的输出换成英文，但是先不强求自己用英文和ai对话(可以使用沉浸式翻译的输入框翻译功能翻译提示词为英文),紧急对话可以直接使用中文提示词,这么做的好处是强迫自己阅读英语提升阅读能力而且ai对英文的处理更高效回答质量也更好
 
 ### 🏃 Running
+- [ ] 减肥
 - [ ] Get one month of access to [Hyperskill](https://hyperskill.org) for sprint learning Java Spring through [JetBrains Free Git Starter Pack](https://lp.jetbrains.com/free-git-starter-pack)
 - [ ] Finish Grind75.
 - [ ] Learn Python/Java QA Automation
