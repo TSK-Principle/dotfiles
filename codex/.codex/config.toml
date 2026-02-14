@@ -12,3 +12,6 @@ model          = "openrouter/free"
 
 [projects."/home/free514dom/test"]
 trust_level = "trusted"
+
+[projects."/home/free514dom/qwq"]
+trust_level = "trusted"
