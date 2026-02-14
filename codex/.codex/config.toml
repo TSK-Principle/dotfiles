@@ -1,5 +1,5 @@
 model_provider = "openrouter"
-model          = "openrouter/free"  # 或别的 OpenRouter 模型
+model          = "openrouter/free"
 
 [model_providers.openrouter]
 name     = "OpenRouter"
@@ -20,4 +20,7 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/home/free514dom/testdir"]
+trust_level = "trusted"
+
+[projects."/home/free514dom/codex-learn"]
 trust_level = "trusted"
