@@ -21,5 +21,8 @@ sudo apt -y install fish && sudo chsh -s "$(which fish)" "$USER"
 # repomix
 command -v repomix > /dev/null || sudo npm install -g repomix
 
+# codex
+command -v codex > /dev/null || sudo npm install -g @openai/codex
+
 # helix
 command -v hx > /dev/null || (wget https://github.com/helix-editor/helix/releases/download/25.07.1/helix_25.7.1-1_amd64.deb && sudo apt -y install ./helix_25.7.1-1_amd64.deb && rm helix_25.7.1-1_amd64.deb)
