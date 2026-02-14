@@ -1,5 +1,5 @@
 model_provider = "openrouter"
-model          = "openrouter/free"
+model          = "deepseek/deepseek-chat-v3.1"
 
 [model_providers.openrouter]
 name     = "OpenRouter"
@@ -8,7 +8,7 @@ env_key  = "OPENROUTER_API_KEY"
 
 [profiles.openrouter]
 model_provider = "openrouter"
-model          = "openrouter/free"
+model          = "deepseek/deepseek-chat-v3.1"
 
 [projects."/home/free514dom/test"]
 trust_level = "trusted"
@@ -23,4 +23,7 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/home/free514dom/codex-learn"]
+trust_level = "trusted"
+
+[projects."/home/free514dom/codex-learn/todo-app"]
 trust_level = "trusted"
