@@ -106,9 +106,130 @@ $ redis-cli
 
 User-2:
 ``````text
+docs/chats/archive on git main
+> sudo systemctl status redis
+● redis-server.service - Advanced key-value store
+     Loaded: loaded (/usr/lib/systemd/system/redis-server.service; enabled>
+     Active: active (running) since Sat 2026-02-14 07:10:56 EST; 7s ago
+ Invocation: d040bd3b8b984c4bb69936b512cfdb48
+       Docs: http://redis.io/documentation,
+             man:redis-server(1)
+   Main PID: 18812 (redis-server)
+     Status: "Ready to accept connections"
+      Tasks: 6 (limit: 9228)
+     Memory: 6.4M (peak: 7M)
+        CPU: 152ms
+     CGroup: /system.slice/redis-server.service
+             └─18812 "/usr/bin/redis-server 127.0.0.1:6379"
+
+Feb 14 07:10:56 debian systemd[1]: Starting redis-server.service - Advance>
+Feb 14 07:10:56 debian systemd[1]: Started redis-server.service - Advanced>
+
+docs/chats/archive on git main
+> redis-cli
+127.0.0.1:6379> exit
+
+docs/chats/archive on git main took 2s
+> redis-cli
+127.0.0.1:6379> SET myname "hello redis"
+OK
+127.0.0.1:6379> GET myname
+"hello redis"
+127.0.0.1:6379>
 ``````
 Model-2:
 ``````markdown
+# ✅ 第 1 节：完美通过！
+
+所有检查点全部正确：
+
+| 检查点 | 状态 |
+|---|---|
+| Redis 运行中 | ✅ `active (running)` |
+| 进入 redis-cli | ✅ |
+| SET | ✅ 返回 `OK` |
+| GET | ✅ 返回 `"hello redis"` |
+
+---
+
+# 第 2 节：键的生死——覆盖、删除、存在？
+
+### 📖 讲解
+
+上节课你学会了 `SET` 和 `GET`。现在学三个新命令：
+
+| 命令 | 作用 | 例子 |
+|---|---|---|
+| `SET` (再次) | **覆盖**旧值 | `SET myname "new"` |
+| `DEL` | **删除**一个键 | `DEL myname` |
+| `EXISTS` | **检查**键是否存在 | `EXISTS myname` |
+
+关键点：
+
+- `DEL` 成功删除返回 `(integer) 1`，键不存在返回 `(integer) 0`
+- `EXISTS` 存在返回 `(integer) 1`，不存在返回 `(integer) 0`
+- `GET` 一个不存在的键，返回 `(nil)`（意思是"空的，什么都没有"）
+
+---
+
+### ✏️ 作业
+
+先进入 Redis（如果你已经退出了）：
+
+```bash
+redis-cli
+```
+
+#### ✅ 检查点 1：确认上节课的值还在
+
+```
+GET myname
+```
+
+> 你应该看到 `"hello redis"`（Redis 重启前数据不会丢失）
+
+#### ✅ 检查点 2：覆盖它
+
+```
+SET myname "I am learning redis"
+```
+
+然后再取出来看看变了没：
+
+```
+GET myname
+```
+
+#### ✅ 检查点 3：检查键是否存在
+
+```
+EXISTS myname
+```
+
+> 应该返回 `(integer) 1`
+
+#### ✅ 检查点 4：删除这个键
+
+```
+DEL myname
+```
+
+> 应该返回 `(integer) 1`
+
+#### ✅ 检查点 5：验证它真的没了
+
+```
+GET myname
+EXISTS myname
+```
+
+> `GET` 应该返回 `(nil)`，`EXISTS` 应该返回 `(integer) 0`
+
+---
+
+### 📋 提交作业
+
+把检查点 1 到 5 的终端输出贴给我 ✨
 ``````
 
 ---
