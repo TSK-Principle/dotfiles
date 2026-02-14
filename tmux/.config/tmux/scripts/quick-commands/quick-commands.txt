@@ -1,6 +1,6 @@
-git add . && git commit -m "update" && git pull --rebase && git push
----
 sudo apt -y update && sudo apt -y upgrade
+---
+git add . && git commit -m "update" && git pull --rebase && git push
 ---
 mvn --quiet compile exec:java -Dexec.mainClass="com.learning.Main"
 ---
