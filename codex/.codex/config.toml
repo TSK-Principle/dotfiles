@@ -1,0 +1,14 @@
+model_provider = "openrouter"
+model          = "openrouter/free"  # 或别的 OpenRouter 模型
+
+[model_providers.openrouter]
+name     = "OpenRouter"
+base_url = "https://openrouter.ai/api/v1"
+env_key  = "OPENROUTER_API_KEY"
+
+[profiles.openrouter]
+model_provider = "openrouter"
+model          = "openrouter/free"
+
+[projects."/home/free514dom/test"]
+trust_level = "trusted"
